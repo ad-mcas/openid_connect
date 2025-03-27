@@ -37,7 +37,7 @@ module WebMockHelper
       response[:headers] = {
         'Content-Type': 'application/json'
       }
-    elif format == :jwt
+    elsif format == :jwt
       response[:headers] = {
         'Content-Type': 'application/jwt'
       }
