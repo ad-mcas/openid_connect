@@ -29,7 +29,7 @@ module OpenIDConnect
       case res.status
       when 200
         if res.headers.has_key?('content-type') and res.headers['content-type'].start_with?('application/jwt')
-          raise res.body
+          raise "#{res.to_hash}"
           JSON::JWT.decode(res.body, :skip_verification).with_indifferent_access
         else
           res.body.with_indifferent_access
