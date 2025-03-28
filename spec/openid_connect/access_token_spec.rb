@@ -102,7 +102,6 @@ describe OpenIDConnect::AccessToken do
     context 'when jwt response' do
     it do
       userinfo = mock_json :get, client.userinfo_uri, 'userinfo/openid', {:format => :jwt , :HTTP_AUTHORIZATION => 'Bearer access_token'} do
-        raise access_token
         access_token.userinfo!
       end
       userinfo.should be_instance_of OpenIDConnect::ResponseObject::UserInfo
