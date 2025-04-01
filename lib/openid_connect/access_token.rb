@@ -28,9 +28,8 @@ module OpenIDConnect
       res = yield
       case res.status
       when 200
-        raise "#{res.body.split('.')}"
         if res.headers.has_key?('content-type') and res.headers['content-type'].start_with?('application/jwt')
-          decoded = JSON::JWT.decode(res.body, :skip_verification)
+          decoded = JSON::JWT.decode(res.body.chomp, :skip_verification)
           decoded.with_indifferent_access
         else
           res.body.with_indifferent_access
